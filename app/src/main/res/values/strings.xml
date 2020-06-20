@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">QuizKaroNa</string>
+    <string name="title">QuizKaroNa</string>
+    <string name="false_text">False</string>
+    <string name="true_text">True</string>
+    <string name="content_prev">Previous</string>
+    <string name="content_next">Next</string>
+    <string name="counter_text">0 out of 100</string>
+    <string name="questions_text">Hello There We Are Doing Something...</string>
+    <string name="designer_name">By Mihir Laddha</string>
+    <string name="your_score_text">Your Score</string>
+    <string name="score_text">0</string>
+    <string name="high_text">Heightest Score</string>
+    <string name="heighest_score_text">0</string>
+    <string name="share_text">Share</string>
+</resources>
