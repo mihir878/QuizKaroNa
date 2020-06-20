@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else{
             shakeAnimation();
             Toast.makeText(MainActivity.this,"Wrong!",Toast.LENGTH_SHORT).show();}
-        int h=Integer.valueOf(heightestScore.getText().toString().trim());
-        if(score>h){
+        int h1=Integer.valueOf(heightestScore.getText().toString().trim());
+        if(score>h1){
            heightestScore.setText(String.valueOf(score));
         }
     }
