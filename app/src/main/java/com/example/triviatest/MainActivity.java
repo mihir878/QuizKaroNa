@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -87,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.prev_button:
                 if(currentQuestionIndex>0){
                 currentQuestionIndex=(currentQuestionIndex-1)%questionList.size();
-                updateQuestion();}
+                updateQuestion();
+                }
                 break;
             case R.id.next_button:
                 currentQuestionIndex=(currentQuestionIndex+1)%questionList.size();
@@ -96,12 +98,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.true_button:
                 checkAnswer(true);
                 currentQuestionIndex=(currentQuestionIndex+1)%questionList.size();
-                updateQuestion();
+                Handler handler=new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQuestion();
+                    }
+                },1000);
                 break;
             case R.id.false_button:
                 checkAnswer(false);
                 currentQuestionIndex=(currentQuestionIndex+1)%questionList.size();
-                updateQuestion();
+                Handler handler1=new Handler();
+                handler1.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateQuestion();
+                    }
+                },1000);
                 break;
             case R.id.button_share:
                 Intent intent=new Intent(Intent.ACTION_SEND);
@@ -132,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateQuestion() {
         String question=questionList.get(currentQuestionIndex).getAnswer();
-        questionCounterText.setText(MessageFormat.format("{0} / {1}", currentQuestionIndex+1, questionList.size()));
+        questionCounterText.setText(MessageFormat.format("{0} / {1}", currentQuestionIndex, questionList.size()));
         questionText.setText(question);
     }
 
@@ -165,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void shakeAnimation(){
+        updateQuestion();
         Animation shake= AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake_animation);
         final CardView cardView=findViewById(R.id.cardView);
         cardView.setAnimation(shake);
